@@ -1,0 +1,157 @@
+<form>
+    <div *ngFor="let row of ques_list">
+        <p>{{row.question_No}} {{row.question_Statement}}</p>
+
+    <fieldset class="form-group">
+
+        <!-- first option -->
+          
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+              <label class="form-check-label" for="gridRadios1">
+                {{row.option_1}}
+              </label>
+            </div>
+
+            <!-- second option -->
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+              <label class="form-check-label" for="gridRadios2">
+                {{row.option_2}}
+              </label>
+            </div>
+            
+            <!-- third option -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  {{row.option_3}}
+                </label>
+              </div>
+
+              <!-- fourth option -->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                <label class="form-check-label" for="gridRadios2">
+                  {{row.option_4}}
+                </label>
+              </div>
+            </div>
+      </fieldset>
+    </div>
+</form>
+
+
+
+----------------------------------------------------------------------------------------------------
+
+
+<div class="container mt-4 center">
+  <div class="card" style="width: 70rem;">
+      <div class="d-flex justify-content-between p-3">
+          <div class="image">
+              <img src="/assets/images/download.png" width=90 alt="logo">
+          </div>
+          <div class="question header">
+               <h1>Subject Quiz</h1>
+               <p class="text-right"> Welcome User</p>
+          </div>
+      </div>
+  
+      <div class="d-flex justify-content-between p-3">
+          <div class="marks">
+              <p class="test-center">{{ques_list[current_Question].question_marks}} Points</p>
+          </div>
+          <div class="timer">
+             <p class="text-right">{{counter/60}}:{{counter%60}} mins</p>
+          </div>
+      </div>
+      <div></div>
+      <div class="card-body">
+        <div class="d-flex justify-content-between p-3">
+          <div>
+            <p class="card-text">{{ques_list[current_Question].question_Statement}}</p>
+          </div>
+          <div *ngIf="responses[current_Question]==null" else elseBlock>Not yet answered</div>
+            <ng-template #elseBlock>Your Response {{responses[current_Question].user_Response}}</ng-template>
+        </div>
+        <div>
+       <button class="btn btn-primary btn-lg btn-block btn-outline-primary" (click)="storeResponse(current_Question, ques_list[current_Question].option_1)">
+          <p>{{ques_list[current_Question].option_1}}</p>
+       </button>
+        <button class="btn btn-primary btn-lg btn-block btn-outline-primary" (click)="storeResponse(current_Question, ques_list[current_Question].option_2)">
+          <p>{{ques_list[current_Question].option_2}}</p>
+        </button>
+        <button class="btn btn-primary btn-lg btn-block btn-outline-primary" (click)="storeResponse(current_Question, ques_list[current_Question].option_3)">
+          <p>{{ques_list[current_Question].option_3}}</p>
+        </button>
+        <button class="btn btn-primary btn-lg btn-block btn-outline-primary" (click)="storeResponse(current_Question, ques_list[current_Question].option_4)" width="100px">
+          <p>{{ques_list[current_Question].option_4}}</p>
+        </button>
+      </div>
+        <div class="d-flex justify-content-between p-3">
+          <div></div>
+          <button class="btn" [disabled]="current_Question===0"  (click)="onLeftClick()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+          </button>
+          <div>
+              {{current_Question+1}} of {{test_size}} questions
+          </div>
+          <button class="btn" (click)="onRightClick()" [disabled]="current_Question===test_size-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+          </button>
+          <div></div>
+  
+        </div>
+  
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-primary me-md-2" type="button" (click)="addResponses()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+----------------------------------------------------------------------------------------------------
+
+
+<div class="container mt-4 center">
+  <div class="card" style="width: 70rem;">
+      <div class="d-flex justify-content-between p-3">
+          <div class="image">
+              <img src="/assets/images/download.png" width=90 alt="logo">
+          </div>
+          <div class="question header">
+               <h1>Subject Quiz</h1>
+               <p class="text-right"> Welcome User</p>
+          </div>
+      </div>
+      <form #quiz="ngForm" novalidate (ngSubmit)="addResponses(quiz.value)">
+  
+        <div *ngFor="let row of ques_list">
+          <div>
+              {{row.question_Statement}}
+          </div>
+          <div>
+            <input type="radio" [name]="row.question_Id" [value]="row.option_1" >{{row.option_1}}
+            <input type="radio" [name]="row.question_Id" [value]="row.option_2" >{{row.option_2}}
+            <input type="radio" [name]="row.question_Id" [value]="row.option_3" >{{row.option_3}}
+            <input type="radio" [name]="row.question_Id" [value]="row.option_4" >{{row.option_4}}
+          </div>
+        </div>  
+  
+        <input type="submit">
+  
+      </form>
+  
+      
+  
+        <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-primary me-md-2" type="button" (click)="addResponses()">Submit</button>
+        </div> -->
+  </div>
+  </div>
+  
+  

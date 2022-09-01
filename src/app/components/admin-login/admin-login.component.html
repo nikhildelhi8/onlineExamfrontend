@@ -1,0 +1,30 @@
+    <app-home-navbar></app-home-navbar>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="text-center">
+                      <h2 style="color: white;">Admin-Login</h2>
+                    </div>
+    
+                    <div class="text-center">
+                        <h6 style="color: white;">Please enter Email Id & Password</h6>
+                    </div>
+                    
+                        <form [formGroup]="loginForm" (ngSubmit)="loginSubmitted()">
+                            <div class="mb-3">
+                              <label for="exampleInputloginid1" class="form-label">Email Id</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="loginidHelp" formControlName="Email">
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Password</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1" formControlName="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>                    
+                </div>
+            </div>
+        </div>
+      </div> 
+      

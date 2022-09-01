@@ -1,0 +1,14 @@
+.option:hover{
+    transform-style: preserve-3d;
+    /* transform: skew(-10deg); */
+    border: #8B008B solid 2px;
+    background:#fff;
+  }
+
+  .option:click{
+    transform-style: preserve-3d;
+    /* transform: skew(-10deg); */
+    border: #1aed16 solid 2px;
+    background:#fff;
+  }
+  

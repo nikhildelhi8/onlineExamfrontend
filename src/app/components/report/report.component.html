@@ -1,0 +1,53 @@
+<app-user-navbar></app-user-navbar>
+<div class="card">
+
+  <div class="d-flex justify-content-between p-3">
+    <div>
+    </div>
+    <div>
+      <h3 style="color:aliceblue">Test Completed. Click on the Show Result to get your result</h3>
+    </div>
+    <div>
+      <button class="btn btn-primary"  routerLink="/user-dashboard/{{user_ID}}/subject_list/test_lists/{{sub_ID}}">Proceed further</button>
+    </div>
+
+  </div>
+  <div class="d-flex justify-content-between p-2">
+    <div>
+    </div>
+    <div>
+      <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Show Results
+        </button>
+      </p>
+    </div>
+    <div>
+    </div>
+
+  </div>
+    
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <table class="table">
+
+        <tr>
+            <th>Name:</th>
+            <td>{{user.firstname}} {{user.lastname}}</td>
+          </tr>
+          <tr>
+            <th>Subject</th>
+            <td>{{subjectTitle.subject_Name}}</td>
+          </tr>
+          <tr>
+            <th>Marks Scored</th>
+            <td>{{userReport.total_Score}} out of {{TestDetail.marks}}</td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td>{{userReport.pass_Fail}}</td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>

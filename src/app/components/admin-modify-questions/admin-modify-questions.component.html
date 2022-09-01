@@ -1,0 +1,99 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container-lg" *ngIf="flag">
+    <div class="d-flex justify-content-between p-3">
+        <div>
+
+        </div>
+        <div>
+                <h1>Search Result</h1>            
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" (click)="closeTable()" href="javapoint:void(0)">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <th>Subject</th>
+            <th>Level</th>
+            <th>Question No</th>
+            <th>Question Statement</th>
+            <th>Option 1 </th>
+            <th>Option 2</th>
+            <th>Option 3</th>
+            <th>Option 4</th>
+            <th>Correct Answer</th>
+            <th>Marks</th>
+            <th>Opertaions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of questions">
+                <td>
+                    {{row.subject_Name}}
+                </td>
+                <td>
+                    {{row.test_Level}}
+                </td>
+                <td>
+                    {{row.question_No}}
+                </td>
+                <td>
+                    {{row.question_Statement}}
+                </td>
+                <td>
+                    {{row.option_1}}
+                </td>
+                <td>
+                    {{row.option_2}}
+                </td>
+                <td>
+                    {{row.option_3}}
+                </td>
+                <td>
+                    {{row.option_4}}
+                </td>
+                <td>
+                    {{row.correct_Answer}}
+                </td>
+                <td>
+                    {{row.question_marks}}
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)="onDelete(row.question_Id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+
+<!---------------------Search Bar--------------------------->
+
+<div class="container">
+  <div class="row">
+      <div class="col-6">
+          <div class="card">
+              <div class="text-center">
+                <h2 style="color: white;">Search Test Questions</h2>
+              </div>
+              
+                  <form #addTest="ngForm" (ngSubmit)="onSubmit(addTest.value)">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text">Select a Subject</label>
+                        <select class="form-select" name="subject_Id" ngModel>
+                            <option selected *ngFor="let row of subjectList" [value]="row.subject_Id">{{row.subject_Name}}</option>
+                        </select>
+                      </div>
+                      <div class="input-group mb-3">
+                        <label class="input-group-text">Select Test Level</label>
+                        <select class="form-select 12rems" name="test_Level" ngModel>
+                            <option selected *ngFor="let row of Index" [value]="row">{{row}}</option>
+                        </select>
+                      </div>
+                    <input class="btn btn-primary me-md-2" type="submit">
+                    </form> 
+          </div>
+      </div>
+  </div>
+</div> 

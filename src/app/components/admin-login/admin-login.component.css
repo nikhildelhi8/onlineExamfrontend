@@ -1,0 +1,15 @@
+.card{
+   
+    padding: 7%;
+    background: hsla(205, 46%, 30%,1);
+    background: linear-gradient(90deg, hsla(205,46%,30%,1) 0%, hsla(260,29%,36%,1)100%);
+}
+label{
+    color: azure;
+    font-size: 1rem;
+}
+
+.container{
+    padding-top: 10%;
+    padding-left: 25%;
+} 

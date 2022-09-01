@@ -1,0 +1,14 @@
+.testgrid{
+    padding-top: 10%;
+    padding-bottom:5%;
+    padding-left: 5%;
+
+}
+.subjectgrid2{
+    padding-left: 5%;
+}
+ .card{
+    -webkit-box-shadow: 3px 7px 55px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 7px 55px -5px rgba(0,0,0,0.75);
+box-shadow: 3px 7px 55px -5px rgba(0,0,0,0.75);
+} 

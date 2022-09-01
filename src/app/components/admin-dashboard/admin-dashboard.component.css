@@ -1,0 +1,9 @@
+.container{
+    padding-top:2%;
+    padding-left:45%;
+  }
+  .card,img{
+    -webkit-box-shadow: 3px 7px 55px -5px rgba(106, 104, 107, 0.75);
+  -moz-box-shadow: 3px 7px 55px -5px rgba(106, 104, 107, 0.75);
+  box-shadow: 3px 7px 55px -5px rgba(106, 104, 107, 0.75);
+  }

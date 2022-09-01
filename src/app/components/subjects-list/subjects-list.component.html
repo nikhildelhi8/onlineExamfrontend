@@ -1,0 +1,20 @@
+<app-user-navbar></app-user-navbar>
+<button class="btn btn-primary" (click)="Gotodashboard()">Go back to dashboard</button>
+<section >
+    <div class="container subjectgrid1">
+      <div class="row">
+          <div class="col lg-4" *ngFor="let s of subjects">
+              <div class="card" style="width: 16rem;">
+                  <img class="card-img-top" src="{{s.image_Path}}" alt="" height="150" width="150">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-size:1.5rem;font-weight:bold">{{s.subject_Name}}</h5>
+                    <a class="btn btn-primary btn-lg" style="color:white" routerLink="test_lists/{{s.subject_Id}}">START TEST</a>
+                  </div>
+              </div>
+            <br>
+            <br>
+          </div>
+          
+            </div>
+          </div>
+     </section>   

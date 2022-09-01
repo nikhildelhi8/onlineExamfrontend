@@ -1,0 +1,24 @@
+<app-user-navbar></app-user-navbar>
+
+
+<button class="btn btn-primary" (click)="Gotodashboard()">Go back to dashboard</button>
+<section>
+  <div class="container testgrid">
+    <div class="row">
+      <h1 *ngIf="tests.length<1" style="color:rgb(13, 13, 13);"> No Test Available </h1>
+      <div class="col-md-4"*ngFor="let row of tests">
+        
+          <div class="card" style="width: 16rem;" >
+              <img class="card-img-top" src="../assets/images/level{{row.test_Level}}.png" alt="Card image cap" height="150" width="150">
+              <div class="card-body">
+                <h5 class="card-title" style="font-size:1.5rem;font-weight:bold">{{row.test_Level}}</h5>
+
+            
+                <button [disabled]="Check(row.test_Id, row.test_Level)" class="btn btn-primary btn-lg" style="color:white" target="_blank" routerLink="welcome/{{row.test_Id}}">START TEST</button>
+                <!-- <button class="btn btn-primary btn-lg" style="color:white" target="_blank" routerLink="welcome/{{row.test_Id}}">START TEST</button> -->
+              </div>
+          </div>
+      </div>
+<section>
+
+

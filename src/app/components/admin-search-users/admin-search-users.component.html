@@ -1,0 +1,203 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container-lg" *ngIf="flag">
+    <div class="d-flex justify-content-between p-3">
+        <div>
+
+        </div>
+        <div>
+                <h1>Search Result</h1>            
+        </div>
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" (click)="closeTable()" href="javapoint:void(0)">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+    <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>City</th>
+            <th>State</th>
+            <th>dob</th>
+            <th>Qualification</th>
+            <th>Year of Completion</th>
+            <th>Subject</th>
+            <th>Level</th>
+            <th>Markes Scored</th>
+            <th>Total Marks</th>
+            <th>Pass/Fail</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of search_list">
+                <td>
+                    {{row.firstname}} {{row.lastname}}
+                </td>
+                <td>
+                    {{row.email}}
+                </td>
+                <td>
+                    {{row.mobile}}
+                </td>
+                <td>
+                    {{row.city}}
+                </td>
+                <td>
+                    {{row.state}}
+                </td>
+                <td>
+                    {{row.dob}}
+                </td>
+                <td>
+                    {{row.qualification}}
+                </td>
+                <td>
+                    {{row.year_of_completion}}
+                </td>
+                <td>
+                    {{row.subject_Name}}
+                </td>
+                <td>
+                    {{row.test_Level}}
+                </td>
+                <td>
+                    {{row.total_Score}}
+                </td>
+                <td>
+                    {{row.marks}}
+                </td>
+                <td>
+                    {{row.pass_Fail}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="text-center">
+                    <h1 style="color: rgb(244, 246, 248); " class="card-header">Search Portal</h1>
+                <div class="accordion" id="accordionExample">
+                                 <!-- Search by Subject -->
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Search by Subject
+                            </button>
+                        </h2>
+
+                            <!-- Body for Search by Subject -->
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <form [formGroup]="SearchbySubject" (ngSubmit)="onSubmitSubject()" style="margin: auto; width: 220px;">
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" style="color: rgb(19, 20, 20); font-size: 1rem;">Select a Subject</label>
+                                        <select class="form-select" formControlName="subject_id">
+                                            <option selected *ngFor="let row of subjects" [value]="row.subject_Id">{{row.subject_Name}}</option>
+                                        </select>
+                                    </div>
+                                    <input class="btn btn-primary me-md-2" type="submit" value="Search Users">
+                                    </form>
+                                
+                                </div>
+                            </div>
+                            </div>
+
+    <!-- Search by State -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Search by State
+        </button>
+      </h2>
+
+      <!-- Body for Search by state -->
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <form [formGroup]="SearchbyState" (ngSubmit)="onSubmitState()" style="margin: auto; width: 220px;">
+                <div class="input-group mb-3">
+                    <label class="input-group">Enter a State</label>
+                    <input type="text" formControlName="state">
+                  </div>
+                  <input class="btn btn-primary me-md-2" type="submit" value="Search Users">
+                </form>
+            </div>
+      </div>
+    </div>
+
+    <!-- Search by Level -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Search by Level
+        </button>
+      </h2>
+
+      <!-- Body for Search by Level -->
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <form [formGroup]="SearchbyLevel" (ngSubmit)="onSubmitLevel()" style="margin: auto; width: 220px;">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" style="color: rgb(19, 20, 20); font-size: 1rem;">Select Level</label>
+                    <select class="form-select" formControlName="Level">
+                        <option selected disabled hidden style='display: none'value='undefined'>Select: </option>
+                        <option value="1" >1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                  </div>
+                  <input class="btn btn-primary me-md-2" type="submit" value="Search Users">
+                </form>
+            </div>
+      </div>
+    </div>
+
+    <!-- Search by Marks -->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="btn btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+            Search by Marks
+          </button>
+        </h2>
+  
+        <!-- Body for Search by Marks -->
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <form [formGroup]="SearchbyMarks" (ngSubmit)="onSubmitMarks()" style="margin: auto; width: 220px;">
+                <div class="input-group mb-3">
+                    <label class="input-group">Enter the range:</label>
+                  </div>
+                  <div class="d-flex">
+                    <div>
+                    <label class="input-group">minimum</label>
+                    <input type="number" formControlName="lower">
+                </div>
+                <div>
+                    <label class="input-grou">maximum</label>
+                    <input type="number" formControlName="upper">
+                </div>
+                  </div>
+                  <input class="btn btn-primary me-md-2" type="submit" value="Search Users">
+                </form>
+            </div>
+        </div>
+      </div>
+  </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+                                   <!-- Modals-->
+
+
+<!-----------------------------------Search by State------------------------------------------- -->
+

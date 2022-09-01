@@ -1,0 +1,88 @@
+
+<app-admin-navbar></app-admin-navbar>
+<div class=" card" *ngIf="flag">
+    
+    <table class="table">
+        <thead>
+            <th>Subject</th>
+            <th>Level</th>
+            <th>Question No</th>
+            <th>Question Statement</th>
+            <th>Option 1 </th>
+            <th>Option 2</th>
+            <th>Option 3</th>
+            <th>Option 4</th>
+            <th>Correct Answer</th>
+            <th>Marks</th>
+            <th>Opertaions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of questions">
+                <td>
+                    {{row.subject_Name}}
+                </td>
+                <td>
+                    {{row.test_Level}}
+                </td>
+                <td>
+                    {{row.question_No}}
+                </td>
+                <td>
+                    {{row.question_Statement}}
+                </td>
+                <td>
+                    {{row.option_1}}
+                </td>
+                <td>
+                    {{row.option_2}}
+                </td>
+                <td>
+                    {{row.option_3}}
+                </td>
+                <td>
+                    {{row.option_4}}
+                </td>
+                <td>
+                    {{row.correct_Answer}}
+                </td>
+                <td>
+                    {{row.question_marks}}
+                </td>
+                <td>
+                    <button class="btn btn-primary" (click)="onDelete(row.question_Id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    </div>
+
+<!---------------------Search Bar--------------------------->
+
+<div class="container " style="text-align: center;" >
+  <div class="row">
+      <div class="col-6">
+          <div class="card">
+              <div class="text-center">
+                <h2 style="color: white;">Search Test Questions</h2>
+              </div>
+              
+                  <form #addTest="ngForm" (ngSubmit)="onSubmit(addTest.value)">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text">Select a Subject</label>
+                        <select class="form-select" name="subject_Id" ngModel>
+                            <option selected *ngFor="let row of subjectList" [value]="row.subject_Id">{{row.subject_Name}}</option>
+                        </select>
+                      </div>
+                      <div class="input-group mb-3">
+                        <label class="input-group-text">Select Test Level</label>
+                        <select class="form-select 12rems" name="test_Level" ngModel>
+                            <option selected *ngFor="let row of Index" [value]="row">{{row}}</option>
+                        </select>
+                      </div>
+                    <input class="btn btn-primary me-md-2" type="submit">
+                    </form> 
+          </div>
+      </div>
+  </div>
+</div> 

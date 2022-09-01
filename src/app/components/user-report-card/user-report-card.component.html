@@ -1,0 +1,87 @@
+<app-user-navbar></app-user-navbar>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+
+  <body class="">
+    <button class="btn btn-primary" (click)="Gotodashboard()">Go back to dashboard</button>
+    <h1 style="color:white;font-size: 4rem;  text-align: center;padding-top:3%;"><fa-icon [icon]="faTrophy"></fa-icon> Report Card!!</h1>
+    
+      <div class="container subjectgrid1 ">
+        <div class="row">
+            <div class="col lg-4" *ngFor="let s of reports">
+                <div class="card" style="width: 16rem;">
+                    
+                    <div class="card-body">
+                      <table style="width:100% ;">
+                        <tr>
+                          <td>
+                            <h5>Name</h5>
+                          </td>
+                        
+                          <td >
+                            <h6>{{s.firstname}}</h6>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                           <h5>Subject</h5> 
+                          </td>
+                          
+                          <td>
+                            <h6>{{s.subject_Name}}</h6>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h5>Score</h5>
+                          </td>
+                         
+                          <td>
+                            <h6>{{s.total_Score}} out of {{s.marks}}</h6>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h5>Levels</h5>
+                          </td>
+                          
+                          <td>
+                            <h6>{{s.test_Level}}</h6>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>
+                             <h5>Pass/Fail</h5> 
+                            </td>
+                            
+                            <td>
+                              <h6>{{s.pass_Fail}}</h6>
+                            </td>
+                          </tr>
+                      </table>
+                  
+             
+                    </div>
+                </div>
+              <br>
+              <br>
+            </div>
+            
+              </div>
+            </div>
+  
+      
+    
+</body>
+</html>
+
